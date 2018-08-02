@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\Bindables\BindableBaseTest.cs" />
-    <Compile Include="Helpers\ObservableCollections\ObservableRangeCollectionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -16,8 +16,4 @@
     <None Remove="NuGetPackaging\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Reactive" Version="4.0.0" />
-  </ItemGroup>
-
 </Project>
