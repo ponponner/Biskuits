@@ -58,6 +58,7 @@
     <Compile Include="Helpers\Observables\ObservableObjectTest.cs" />
     <Compile Include="Helpers\Observables\ObservableRangeCollectionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LifeCycleLogStoreTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
