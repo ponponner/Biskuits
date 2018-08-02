@@ -1,15 +1,13 @@
-﻿using Biskuits.Helpers.ExternalImplements;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Biskuits.Helpers.Bindables
+namespace Biskuits.Helpers.Observables
 {
     /// <summary>
     /// このクラスは単純なモデルのための<see cref="INotifyPropertyChanged"/>実装を表します。
     /// </summary>
-    public abstract class BindableBase : INotifyPropertyChanged
+    public abstract class ObservableObject : INotifyPropertyChanged
     {
         /// <summary>
         /// プロパティの値が変更されたとき、このイベントが発火します。
@@ -22,7 +20,7 @@ namespace Biskuits.Helpers.Bindables
         /// <param name="args">PropertyChangedEventArgsです。</param>
         protected void RaisePropertyChanged(PropertyChangedEventArgs args)
         {
-            BindableBaseExtImpl.RaisePropertyChanged(PropertyChanged, this, args);
+            ObservableObjectExtImpl.RaisePropertyChanged(PropertyChanged, this, args);
         }
 
         /// <summary>
@@ -46,7 +44,7 @@ namespace Biskuits.Helpers.Bindables
         /// <returns>値が変更された場合は真であり、既に値がセットされている場合は偽です。</returns>
         protected virtual bool SetProperty<T>(ref T storage, T value, PropertyChangedEventArgs args)
         {
-            return BindableBaseExtImpl.SetProperty(ref storage, value, RaisePropertyChanged, args);
+            return ObservableObjectExtImpl.SetProperty(ref storage, value, RaisePropertyChanged, args);
         }
 
         /// <summary>
@@ -76,7 +74,7 @@ namespace Biskuits.Helpers.Bindables
         /// <returns>値が変更された場合は真であり、既に値がセットされている場合は偽です。</returns>
         protected virtual bool SetProperty<T>(ref T storage, T value, Action onChanged, PropertyChangedEventArgs args)
         {
-            return BindableBaseExtImpl.SetProperty(ref storage, value, onChanged, RaisePropertyChanged, args);
+            return ObservableObjectExtImpl.SetProperty(ref storage, value, onChanged, RaisePropertyChanged, args);
         }
 
         /// <summary>

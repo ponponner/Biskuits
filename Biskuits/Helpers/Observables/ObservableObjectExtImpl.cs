@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
-namespace Biskuits.Helpers.ExternalImplements
+namespace Biskuits.Helpers.Observables
 {
     /// <summary>
-    /// BindableBaseのメソッドの外部実装群を表します。
-    /// BindableBaseを継承できない場合などで利用します。
+    /// <see cref="ObservableObject">のメソッドの外部実装群を表します。
+    /// <see cref="ObservableObject">を継承できない場合などで利用します。
     /// </summary>
-    public static class BindableBaseExtImpl
+    public static class ObservableObjectExtImpl
     {
         public static void RaisePropertyChanged(
             PropertyChangedEventHandler handler,

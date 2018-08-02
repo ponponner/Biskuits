@@ -1,14 +1,14 @@
-﻿using Biskuits.Helpers.Bindables;
+﻿using Biskuits.Helpers.Observables;
 using NUnit.Framework;
 using System;
 using System.ComponentModel;
 
-namespace UnitTests.Helpers.Bindables
+namespace UnitTests.Helpers.Observables
 {
     [TestFixture]
     class BindableBaseTest
     {
-        class Model : BindableBase
+        class Model : ObservableObject
         {
             static PropertyChangedEventArgs Prop10Pcea = new PropertyChangedEventArgs(nameof(Prop10));
             static PropertyChangedEventArgs Prop20Pcea = new PropertyChangedEventArgs(nameof(Prop20));
