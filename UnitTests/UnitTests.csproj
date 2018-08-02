@@ -53,6 +53,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Extensions\ReactiveExtensionsPlusTest.cs" />
+    <Compile Include="Helpers\Extensions\ReflectionExtensionsTest.cs" />
     <Compile Include="Helpers\Observables\ObservableObjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
