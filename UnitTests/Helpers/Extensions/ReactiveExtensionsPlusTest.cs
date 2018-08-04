@@ -86,40 +86,66 @@ namespace UnitTests.Helpers.Extensions
             Assert.That(observer02.LastEventArgs, Is.Null);
         }
 
-        [Test]
-        public void TestAddToWeakly()
-        {
-            var model01 = new ObservableModel();
-            var model02 = new ObservableModel();
-            var modelWeakReference01 = new WeakReference(model01);
-            var modelWeakReference02 = new WeakReference(model02);
-            var observer01 = new Observer<PropertyChangedEventArgs>();
-            var observer02 = new Observer<PropertyChangedEventArgs>();
+        // AddToWeaklyを実装する目的を見失ったため廃止した
+        //[Test]
+        //public void TestAddToWeakly_Unsubscribe()
+        //{
+        //    var model = new ObservableModel();
+        //    var modelWeakReference = new WeakReference(model);
+        //    var observer = new Observer<PropertyChangedEventArgs>();
+        //
+        //    var subscriptions = new CompositeDisposable();
+        //    model
+        //        .ObserveEvent<PropertyChangedEventArgs>(nameof(model.PropertyChanged))
+        //        .SubscribeWeakly(observer.OnObservedEvent)
+        //        .AddToWeakly(subscriptions);
+        //
+        //    // イベントを発信および受信できることを確認する
+        //    model.Qty = 8;
+        //    Assert.That(observer.LastEventArgs, Is.Not.Null);
+        //
+        //    // イベント購読解除できることを確認する
+        //    subscriptions.Dispose();
+        //    observer.LastEventArgs = null;
+        //    model.Qty = 16;
+        //    Assert.That(observer.LastEventArgs, Is.Null);
+        //}
 
-            var subscription01 = model01
-                .ObserveEvent<PropertyChangedEventArgs>(nameof(model01.PropertyChanged))
-                .SubscribeWeakly(observer01.OnObservedEvent);
-            var subscription02 = model02
-                .ObserveEvent<PropertyChangedEventArgs>(nameof(model02.PropertyChanged))
-                .SubscribeWeakly(observer02.OnObservedEvent);
 
-            // イベントを発信および受信できることを確認する
-            model01.Qty = 8;
-            model02.Qty = 8;
-            Assert.That(observer01.LastEventArgs, Is.Not.Null);
-            Assert.That(observer02.LastEventArgs, Is.Not.Null);
-
-            // イベント購読解除を行わないと、発信元が破棄されないことを確認する
-            // （subscriptionを保持していると発信元が破棄されないとも言える）
-            model01 = null;
-            model02 = null;
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            Assert.That(modelWeakReference01.IsAlive, Is.True);
-            Assert.That(modelWeakReference02.IsAlive, Is.True);
-        }
+        // AddToWeaklyを実装する目的を見失ったため廃止した
+        //[Test]
+        //public void TestAddToWeakly_Weakly()
+        //{
+        //    var model = new ObservableModel();
+        //    var modelWeakReference = new WeakReference(model);
+        //    var observer = new Observer<PropertyChangedEventArgs>();
+        //
+        //    var subscription =
+        //        model
+        //        .ObserveEvent<PropertyChangedEventArgs>(nameof(model.PropertyChanged))
+        //        .SubscribeWeakly(observer.OnObservedEvent);
+        //    var subscriptionWeakReference = new WeakReference(subscription);
+        //
+        //    var subscriptions = new CompositeDisposable();
+        //    subscription.AddToWeakly(subscriptions);
+        //
+        //    // イベントを発信および受信できることを確認する
+        //    model.Qty = 8;
+        //    Assert.That(observer.LastEventArgs, Is.Not.Null);
+        //
+        //    // 発信元は、イベント購読解除を行わずとも破棄されえることを確認する
+        //    model = null;
+        //    GC.Collect();
+        //    GC.WaitForPendingFinalizers();
+        //    Assert.That(modelWeakReference.IsAlive, Is.False);
+        //
+        //    // イベント購読解除が空実行されることを確認する
+        //    subscriptions.Dispose();
+        //
+        //    // オブジェクトの延命
+        //    //Console.WriteLine(observer);
+        //    //Console.WriteLine(subscription);
+        //}
 
         [Test]
         public void TestObserveEvent()

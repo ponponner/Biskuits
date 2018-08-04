@@ -174,29 +174,31 @@ namespace Biskuits.Helpers.Extensions
             compositeDisposable.Add(source);
         }
 
-        public static void AddToWeakly<TSource>(this TSource source, CompositeDisposable compositeDisposable)
-            where TSource : IDisposable
-        {
-            compositeDisposable.Add(source);
-        }
-
-        class WeakDisposable : IDisposable
-        {
-            public WeakReference<IDisposable> WeakReference;
-            public WeakDisposable(IDisposable target)
-            {
-                WeakReference = new WeakReference<IDisposable>(target);
-            }
-            public void Dispose()
-            {
-                IDisposable target;
-                if (WeakReference.TryGetTarget(out target))
-                {
-                    target.Dispose();
-                    WeakReference.SetTarget(null);
-                }
-            }
-        }
+        // 実装の目的を見失っため廃止
+        //public static void AddToWeakly<TSource>(this TSource source, CompositeDisposable compositeDisposable)
+        //    where TSource : IDisposable
+        //{
+        //    compositeDisposable.Add(new WeakDisposable(source));
+        //}
+        //
+        // 実装の目的を見失っため廃止
+        //private class WeakDisposable : IDisposable
+        //{
+        //    public WeakReference<IDisposable> WeakReference;
+        //    public WeakDisposable(IDisposable target)
+        //    {
+        //        WeakReference = new WeakReference<IDisposable>(target);
+        //    }
+        //    public void Dispose()
+        //    {
+        //        IDisposable target;
+        //        if (WeakReference.TryGetTarget(out target))
+        //        {
+        //            target.Dispose();
+        //            WeakReference.SetTarget(null);
+        //        }
+        //    }
+        //}
 
     }
 }

@@ -417,7 +417,6 @@ Global
 		{9DCF1AEF-82CC-488E-B084-A165D71CCE98}.Release|x64.ActiveCfg = Release|Any CPU
 		{9DCF1AEF-82CC-488E-B084-A165D71CCE98}.Release|x64.Build.0 = Release|Any CPU
 		{9DCF1AEF-82CC-488E-B084-A165D71CCE98}.Release|x86.ActiveCfg = Release|Any CPU
-		{9DCF1AEF-82CC-488E-B084-A165D71CCE98}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
