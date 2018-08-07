@@ -12,24 +12,23 @@ namespace UnitTests.Services
     class LifeCycleLogStoreTest
     {
 
+        /// <summary>
+        /// <seealso cref="LifeCycleLogStore"/>の利用例を表現したクラスです.
+        /// IDisposableをインターフェースに持ちます.
+        /// </summary>
         class Model : IDisposable
         {
-            static readonly LifeCycleLogStore store = LifeCycleLogStore.Instance;
-
-            public readonly Guid Guid;
-            public LifeCycleLog OwnLifeCycleLog
-            {
-                get { return LifeCycleLogStore.Instance.Find(Guid); }
-            }
+            public readonly Guid OwnLifeCycleLogGuid;
+            public readonly LifeCycleLog OwnLifeCycleLog;
 
             public Model()
             {
-                LifeCycleLogStore.Instance.CreateLifeCycleLog(this, Guid = Guid.NewGuid());
+                OwnLifeCycleLog = LifeCycleLogStore.Instance.CreateLifeCycleLog(this, OwnLifeCycleLogGuid = Guid.NewGuid());
             }
 
             ~Model()
             {
-                // アンマネージドリソースを解放する (マネージドリソースのGC回収は自動で行われる)
+                // アンマネージドリソースを解放します (マネージドリソースのGC回収は自動で行われます)
                 Dispose(false);
                 OwnLifeCycleLog.OnFinalized();
             }
@@ -39,14 +38,14 @@ namespace UnitTests.Services
 
             public void Dispose()
             {
-                // マネージド・アンマネージド両方のリソースを解放する
+                // マネージド・アンマネージドの両リソースを解放
                 Dispose(true);
                 OwnLifeCycleLog.OnDisposed();
             }
 
             protected virtual void Dispose(bool disposing)
             {
-                // 多重にDisposeされたら 例外を投げる
+                // 多重にDisposeされたら 例外を投げます
                 if (isDisposed)
                     throw new InvalidOperationException($"{GetType().Name}は すでにDisposeされています。");
 
@@ -55,7 +54,7 @@ namespace UnitTests.Services
                     // マネージドリソースの解放処理
                     ;
 
-                    // ファイナライズを抑制する
+                    // ファイナライズの抑制
                     GC.SuppressFinalize(this);
                     OwnLifeCycleLog.OnSuppressedFinalize();
                 }
@@ -63,7 +62,7 @@ namespace UnitTests.Services
                 // アンマネージドリソースの解放処理
                 ;
 
-                // Dispose済みであることを記憶する
+                // Dispose済みであることを記憶します
                 isDisposed = true;
                 OwnLifeCycleLog.OnInnnerDisposed();
             }

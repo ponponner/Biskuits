@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace Biskuits.Services
 {
     /// <summary>
-    /// インスタンスのライフサイクルを記憶するためのシステム。
+    /// インスタンスのライフサイクルを記憶するためのシステムです。
     /// メモリリーク、<c>Dispose</c>、ファイナライズなどの
-    /// ライフサイクルに関する処理の漏れを検知するために利用する。
+    /// ライフサイクルに関する処理の漏れを検知するために利用します。
     /// </summary>
     public partial class LifeCycleLogStore : ObservableObject
     {
@@ -20,13 +20,9 @@ namespace Biskuits.Services
         static readonly string StringHeader = $"{nameof(LifeCycleLogStore)}:";
 
 
-        /// シングルトン =====================================
+        /// シングルトン(スレッドセーフ) =====================
 
-        public static LifeCycleLogStore Instance
-        {
-            get { return _Instance ?? (_Instance = new LifeCycleLogStore()); }
-        }
-        static LifeCycleLogStore _Instance;
+        public static LifeCycleLogStore Instance { get; } = new LifeCycleLogStore();
 
 
         /// 共通機能 =========================================
@@ -62,13 +58,16 @@ namespace Biskuits.Services
         /// <summary>
         /// ターゲットの <see cref="LifeCycleLog"/> を作成し、管理対象とする
         /// </summary>
-        public void CreateLifeCycleLog(object target, Guid guid)
+        public LifeCycleLog CreateLifeCycleLog(object target, Guid guid)
         {
-            LifeCycleLogs.Add(new LifeCycleLog(target, guid));
+            var log = new LifeCycleLog(target, guid);
+            LifeCycleLogs.Add(log);
+            return log;
         }
         /// <summary>
         /// <paramref name="guid"/> が一致する <see cref="LifeCycleLog"/> を <see cref="LifeCycleLogs"/> から取得する
         /// </summary>
+        [Obsolete("コスト削減のため, ログは保持してください")]
         public LifeCycleLog Find(Guid guid)
         {
             var log = LifeCycleLogs.FirstOrDefault(m => m.Guid.Equals(guid)) as LifeCycleLog;
