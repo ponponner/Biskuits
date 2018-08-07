@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biskuits", "Biskuits\Biskuits.csproj", "{8C3B16FC-DC81-4013-8897-453D163CF8BE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{9DCF1AEF-82CC-488E-B084-A165D71CCE98} = {9DCF1AEF-82CC-488E-B084-A165D71CCE98}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Android", "Samples\Samples.Android\Samples.Android.csproj", "{277C8201-600D-4F39-8341-6EC344E22460}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -29,9 +26,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples", "Samples\Samples\
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{B2521799-3028-4224-9337-5BFE76DB9CEA}"
-	ProjectSection(ProjectDependencies) = postProject
-		{9DCF1AEF-82CC-488E-B084-A165D71CCE98} = {9DCF1AEF-82CC-488E-B084-A165D71CCE98}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Reactive", "..\..\projects\reactive\Rx.NET\Source\src\System.Reactive\System.Reactive.csproj", "{9DCF1AEF-82CC-488E-B084-A165D71CCE98}"
 EndProject

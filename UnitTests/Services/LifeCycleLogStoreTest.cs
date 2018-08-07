@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using static Biskuits.Services.LifeCycleLogStore;
 
 namespace UnitTests.Services
@@ -126,7 +127,9 @@ namespace UnitTests.Services
 
             model_01 = null;
             model_02 = null;
+            Task.Delay(TimeSpan.FromMilliseconds(10));
             store.GCCollect().Wait();
+            Task.Delay(TimeSpan.FromMilliseconds(10));
             store.GCCollect().Wait();
             Console.WriteLine($"オブジェクトをGC回収しました。");
 

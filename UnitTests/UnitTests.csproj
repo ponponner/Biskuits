@@ -51,6 +51,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Reactive, Version=4.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.4.0.0\lib\net46\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\Extensions\ReactiveExtensionsPlusTest.cs" />
@@ -65,10 +71,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\projects\reactive\Rx.NET\Source\src\System.Reactive\System.Reactive.csproj">
-      <Project>{9dcf1aef-82cc-488e-b084-a165d71cce98}</Project>
-      <Name>System.Reactive</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Biskuits\Biskuits.csproj">
       <Project>{8C3B16FC-DC81-4013-8897-453D163CF8BE}</Project>
       <Name>Biskuits</Name>
