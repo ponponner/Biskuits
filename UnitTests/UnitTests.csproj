@@ -55,7 +55,8 @@
   <ItemGroup>
     <Compile Include="Helpers\Extensions\ReactiveExtensionsPlusTest.cs" />
     <Compile Include="Helpers\Extensions\ReflectionExtensionsTest.cs" />
-    <Compile Include="Helpers\Observables\ObservableObjectTest.cs" />
+    <Compile Include="Helpers\Observables\ObservableObjectTest_RaisePropertyChanged.cs" />
+    <Compile Include="Helpers\Observables\ObservableObjectTest_SetProperty.cs" />
     <Compile Include="Helpers\Observables\ObservableRangeCollectionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LifeCycleLogStoreTest.cs" />

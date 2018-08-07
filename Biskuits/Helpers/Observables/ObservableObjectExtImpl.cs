@@ -5,8 +5,8 @@ using System.ComponentModel;
 namespace Biskuits.Helpers.Observables
 {
     /// <summary>
-    /// <see cref="ObservableObject">のメソッドの外部実装群を表します。
-    /// <see cref="ObservableObject">を継承できない場合などで利用します。
+    /// <seealso cref="ObservableObject">のメソッドの外部実装群を表します.
+    /// <seealso cref="ObservableObject">を継承できない場合などで利用します.
     /// </summary>
     public static class ObservableObjectExtImpl
     {

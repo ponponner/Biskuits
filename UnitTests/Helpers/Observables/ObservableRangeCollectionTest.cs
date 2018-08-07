@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
-namespace UnitTests.Helpers.ObservableCollections
+namespace UnitTests.Helpers.Observables
 {
     [TestFixture]
     class ObservableRangeCollectionTest
